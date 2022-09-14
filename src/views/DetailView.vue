@@ -1,33 +1,37 @@
 <template>
-  <div class="movie-box">
-    <a class="a-back" @click.stop="back">Home</a>
+  <Transition name="fade">
+  <div class="detail-intro" v-if="show"></div>
+  </Transition>
+    <div class="movie-box">
+      <a class="a-back" @click.stop="back">Home</a>
 
-    <div class="movie-detail">
-      <img class="movie-image" :src="movieInfo.image">
+      <div class="movie-detail">
+        <img class="movie-image" :src="movieInfo.image">
 
-      <div class="movie-info-wrap">
-      <h2 class="movie-title">{{movieInfo.title}}</h2>
-      <span>{{movieInfo.original_title}}</span>
-        <p class="movie-info">
-        {{movieInfo.release_date}}'s <br>
-        Director - {{movieInfo.director}} <br>
-        Producer - {{movieInfo.producer}} <br>
-        Running Time : {{movieInfo.running_time}} min
-      </p>
-      <p class="movie-desc">{{movieInfo.description}}</p>
+        <div class="movie-info-wrap">
+          <h2 class="movie-title">{{movieInfo.title}}</h2>
+          <span>{{movieInfo.original_title}}</span>
+          <p class="movie-info">
+            {{movieInfo.release_date}}'s <br>
+            Director - {{movieInfo.director}} <br>
+            Producer - {{movieInfo.producer}} <br>
+            Running Time : {{movieInfo.running_time}} min
+          </p>
+          <p class="movie-desc">{{movieInfo.description}}</p>
+        </div>
+
       </div>
 
     </div>
 
-  </div>
 </template>
 
 <script>
-import { computed } from 'vue';
+import { computed, onMounted, onUpdated, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router'
 import { useStore } from 'vuex';
 export default {
-  setup(){
+  setup(props,context){
     const route = useRoute();
     const id = route.params.id;
     
@@ -37,13 +41,27 @@ export default {
     
     const router = useRouter();
     const back = () => {
-      router.push('/')
+      router.push('/ghibli-vuepage/')
     }
+
+    const show = ref(true);
+    onMounted( () => {
+      window.scrollTo(0,0);
+      document.querySelector('html').style.overflowY = "hidden";
+    })
+
+    onUpdated( () => {
+      show.value = false;
+      document.querySelector('html').style.overflowY = "auto";
+      context.emit('hide');
+    })
+
 
     return{
       id,
       movieInfo,
-      back
+      back,
+      show
     }
   }
 }
@@ -68,6 +86,7 @@ export default {
   cursor: pointer;
   color: #999;
   transition: color 0.3s;
+  z-index: 9999
 }
 .a-back:hover{
   color: #fff;
@@ -104,7 +123,29 @@ export default {
   color: #999;
 }
 
-@media screen and (max-width: 1040px){
+.detail-intro{
+  position: fixed;
+  left: 0;
+  top:0;
+  width: 100%;
+  height: 100%;
+  background: url('@/assets/load.jpg') no-repeat center;
+  background-size: cover;
+  z-index: 99;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+
+@media screen and (max-width: 1140px){
   .movie-image{
     height: 50vh;
     width: auto;

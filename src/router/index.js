@@ -6,7 +6,7 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
-      path: '/',
+      path: '/ghibli-vuepage/',
       redirect: '/home'
     },
     {
@@ -15,7 +15,6 @@ const router = createRouter({
     },
     {
       path: '/detail/:id',
-      name: 'detail',
       component: DetailView
     }
   ]
