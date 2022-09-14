@@ -8,9 +8,9 @@
         {{propsdata.title}}
         <small>{{propsdata.original_title}}</small>
       </h2>
-      <p class="a-desc">
+      <!-- <p class="a-desc">
         {{propsdata.description}}
-      </p>
+      </p> -->
     </a>
   </div>
 </template>
@@ -39,15 +39,12 @@ export default {
   display: block;
 }
 
-.movie-box:hover .a-image img{
-  transform: scale(1.01) translate(-50%, -50%);
-}
 
 .a-image {
   position: relative;
   display: block;
   width: 100%;
-  height: 500px;
+  height: 650px;
   overflow: hidden;
 }
 
@@ -66,11 +63,11 @@ export default {
   display: block;
   margin: 20px 0;
   font-size: 22px;
+  white-space: nowrap;
 }
 
 .a-title small {
   display: block;
-  float: right;
   font-size: 15px;
   color: #ccc;
 }

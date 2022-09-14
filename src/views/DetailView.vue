@@ -72,9 +72,9 @@ export default {
   position: relative;
   display: block;
   width: 100%;
-  height: 100vh;
-
+  height: 105vh;
 }
+
 .a-back{
   position: sticky;
   right: 30px;
@@ -110,6 +110,7 @@ export default {
   height: auto;
   border-radius: 10px;
   box-shadow: 10px 10px 10px #111;
+  
 }
 
 .movie-info-wrap{

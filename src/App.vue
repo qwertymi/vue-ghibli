@@ -1,5 +1,6 @@
 <template>
   <div class="wrap">
+    <h1 class="main-title">GHIBLI STUDIO</h1>
     <div class="container">
       <Transition name="fade">
 
@@ -14,6 +15,7 @@
 <script>
 import { ref } from 'vue'
 import { useStore } from 'vuex'
+import $ from 'jquery'
 
 export default {
 
@@ -25,8 +27,21 @@ export default {
     const show = ref(true)
     const hideIntro = () => {
       show.value = false;
+      document.querySelector('html').style.overflowX = 'auto';
       document.querySelector('html').style.overflowY = 'auto';
     }
+
+  $('html').on('mousewheel', function (e) {
+    const wheelDelta = e.originalEvent.wheelDelta;
+    if (wheelDelta > 0) {
+      console.log("up");
+      $(this).scrollLeft(-wheelDelta + $(this).scrollLeft());
+    } else {
+      console.log("down");
+      $(this).scrollLeft(-wheelDelta + $(this).scrollLeft());
+    }
+  });
+  
 
 
     return{
@@ -59,8 +74,9 @@ html{
   font-size: 16px;
   background: #222;
   color: #fff;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   overflow-y: hidden;
+  scroll-behavior:smooth;
 }
 
 .wrap{
@@ -68,13 +84,12 @@ html{
   display: block;
 }
 
-.container
-{
+.container{
   position: relative;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
 }
+
+
 .intro{
   position: fixed;
   left: 0;
@@ -112,6 +127,21 @@ html{
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   border-radius: 2px;
+}
+
+.main-title{
+  font-size: 37px;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  display: block;
+  width: 100%;
+  height: 77px;
+  text-align: center;
+  background-color: #222;
+  transform: translateX(-50%);
+  padding-top: 20px;
+  z-index: 98;
 }
 
 </style>

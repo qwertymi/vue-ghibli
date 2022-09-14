@@ -1,6 +1,7 @@
 import {createRouter, createWebHistory} from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import DetailView from '../views/DetailView.vue'
+import NotFound from "../views/NotFound.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -16,7 +17,18 @@ const router = createRouter({
     {
       path: '/detail/:id',
       component: DetailView
-    }
+    },
+
+    {
+      path: "/404",
+      name: "notFound",
+      component: NotFound,
+    },
+    {
+      path: "/:pathMatch(.*)*",
+      redirect: "/404",
+    },
+
   ]
 });
 
