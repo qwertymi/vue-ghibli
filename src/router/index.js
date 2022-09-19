@@ -3,33 +3,32 @@ import HomeView from '../views/HomeView.vue'
 import DetailView from '../views/DetailView.vue'
 import NotFound from "../views/NotFound.vue";
 
+
 const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
-      path: '/ghibli-vuepage/',
-      redirect: '/home'
+      path: '/ghibli-vuepage/home',
+      redirect: '/'
     },
     {
-      path: '/home',
+      path: '/ghibli-vuepage/',
       component: HomeView
     },
     {
-      path: '/detail/:id',
+      path: '/ghibli-vuepage/detail/:id',
       component: DetailView
     },
-
     {
-      path: "/404",
+      path: "/ghibli-vuepage/404",
       name: "notFound",
       component: NotFound,
     },
     {
       path: "/:pathMatch(.*)*",
-      redirect: "/404",
-    },
-
+      redirect: "/ghibli-vuepage/404",
+    }
   ]
 });
 
-export default router
+export default router;

@@ -24,7 +24,7 @@ export default {
     const router = useRouter();
     const detailMovie = () => {
       // props를 참조하기 위해 setup(props)를 활용
-      router.push('/detail/' + props.propsdata.id);
+      router.push('/ghibli-vuepage/detail/' + props.propsdata.id);
     }
     return{
       detailMovie
