@@ -1,24 +1,6 @@
-# ghibli
+# 스튜디오 지브리 API
+▪ 𝘝𝘜𝘌 𝘞𝘖𝘙𝘒<br>
+https://qwertymi.github.io/ghibli-vuepage/<br>
 
-## Project setup
-```
-npm install
-```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+##
